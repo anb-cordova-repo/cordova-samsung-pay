@@ -81,6 +81,18 @@ cordova.plugins.SamsungProv.getVisaWalletInfo(success, error);
 cordova.plugins.SamsungProv.getAllCards(success, error);
 ```
 
+### 8. set Service Id
+
+```javascript
+cordova.plugins.SamsungProv.setServiceId(setServiceId,success, error);
+```
+
+### 9. init
+
+```javascript
+cordova.plugins.SamsungProv.init(success, error);
+```
+
 ## Platforms Supported
 
 - Android

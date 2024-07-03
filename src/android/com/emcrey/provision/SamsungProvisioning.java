@@ -75,10 +75,10 @@ public class SamsungProvisioning extends CordovaPlugin {
         return false;
     }
 
-    private void init(CordovaInterface cordova, CordovaWebView webView) {
-        super.initialize(cordova, webView);
+    private void init() {
+        super.initialize(this.cordova, this.webView);
         if (!TextUtils.isEmpty(ServiceId)) {
-            this.iSamProvSDK = SamProvSDK.initSamsungPrevisioning(cordova.getActivity(), ServiceId);
+            this.iSamProvSDK = SamProvSDK.initSamsungPrevisioning(this.cordova.getActivity(), ServiceId);
             callbackContext.success("Samsung SDK initialized with Service ID: " + ServiceId);
         } else {
             callbackContext.error("Service ID not set");
@@ -102,7 +102,7 @@ public class SamsungProvisioning extends CordovaPlugin {
         String newServiceId = args.getString(0);
         if (!TextUtils.isEmpty(newServiceId)) {
             this.ServiceId = newServiceId;
-            this.init(this.cordova, this.webView);
+            this.init();
             callbackContext.success("Service ID set to " + newServiceId);
         } else {
             callbackContext.error("Service ID is empty");
