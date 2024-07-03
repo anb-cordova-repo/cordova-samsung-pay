@@ -87,8 +87,8 @@ cordova.plugins.SamsungProv.getAllCards(success, error);
 
 ## Authors
 
-- [Mohammad Al Nassri] - anb
-- [Ahmad Al Nsour] - anb
+- Mohammad Al Nassri - anb
+- Ahmad Al Nsour - anb
 
 
 ## License
