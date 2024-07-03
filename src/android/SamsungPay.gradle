@@ -1,0 +1,15 @@
+dependencies {
+    implementation(files("libs/apex_oem_provisioning_sdk.aar"))
+    implementation("com.google.code.gson:gson:2.10.1")
+}
+
+android {
+    defaultConfig {
+        buildConfigField("String", "gradle_server_id", "\"3d3748e7b3\"")
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+}
