@@ -86,7 +86,7 @@ public class SamsungProvisioning extends CordovaPlugin {
     }
 
     public void checkEligibility() {
-        iSamProvSDK.checkEligibility((available, result) - > {
+        iSamProvSDK.checkEligibility((available, result) -> {
             JSONObject object = new JSONObject();
             try {
                 object.put("available", available);
