@@ -26,6 +26,9 @@ module.exports = {
   setServiceId: function (success, error, serviceId) {
     exec(success, error, PLUGIN_NAME, "setServiceId", [serviceId]);
   },
+  getServiceId: function (success, error) {
+    exec(success, error, PLUGIN_NAME, "getServiceId");
+  },
   init: function (success, error) {
     exec(success, error, PLUGIN_NAME, "init");
   },

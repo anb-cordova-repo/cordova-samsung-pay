@@ -68,6 +68,10 @@ public class SamsungProvisioning extends CordovaPlugin {
             this.setServiceId(args);
             return true;
         }
+        if (action.equals("getServiceId")) {
+            this.getServiceId();
+            return true;
+        }
         if (action.equals("init")) {
             this.init();
             return true;
@@ -106,6 +110,14 @@ public class SamsungProvisioning extends CordovaPlugin {
         } else {
             callbackContext.error("Service ID is empty");
         }
+    }
+
+    private void getServiceId() {
+        if(serviceId == null) {
+            callbackContext.error("Service ID is not set");
+        }
+
+        callbackContext.success(ServiceId);
     }
 
     private void addCard(JSONArray args) throws JSONException {
