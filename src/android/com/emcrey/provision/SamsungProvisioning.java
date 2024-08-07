@@ -172,8 +172,8 @@ public class SamsungProvisioning extends CordovaPlugin {
     private void getAllCards() {
         iSamProvSDK.getAllCards(new GetCardsListener() {
             @Override
-            public void onSuccess(List < CardInfo > list) {
-                Type listType = new TypeToken < List < CardInfo >> () {}.getType();
+            public void onSuccess(List <CardInfo> list) {
+                Type listType = new TypeToken <List<CardInfo>>() {}.getType();
                 String card = gson.toJson(list, listType);
                 JSONObject object;
                 try {
