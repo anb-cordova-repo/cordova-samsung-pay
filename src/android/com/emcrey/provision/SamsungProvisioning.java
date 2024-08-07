@@ -113,11 +113,11 @@ public class SamsungProvisioning extends CordovaPlugin {
     }
 
     private void getServiceId() {
-        if(serviceId == null) {
+        if(this.ServiceId == null) {
             callbackContext.error("Service ID is not set");
         }
 
-        callbackContext.success(ServiceId);
+        callbackContext.success(this.ServiceId);
     }
 
     private void addCard(JSONArray args) throws JSONException {
