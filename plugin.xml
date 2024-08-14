@@ -1,5 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="apex-oem-provisioning-sdk" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<plugin id="apex-oem-provisioning-sdk" version="1.0.0"
+	xmlns="http://www.w3.org/ns/widgets"
+	xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>Samsung Pay</name>
 	<js-module name="SamsungProv" src="www/SamsungPayPlugin.js">
 		<clobbers target="cordova.plugins.SamsungProv"/>

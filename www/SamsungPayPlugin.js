@@ -32,4 +32,7 @@ module.exports = {
   init: function (success, error) {
     exec(success, error, PLUGIN_NAME, "init");
   },
+  verifyCardIdv: function(success, error, args) {
+    exec(success, error, PLUGIN_NAME, 'verifyCardIdv', args);
+};
 };

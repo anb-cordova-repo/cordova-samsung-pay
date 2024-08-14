@@ -6,11 +6,13 @@ import android.text.TextUtils;
 import com.emcrey.payment.ISamProvSDK;
 import com.emcrey.payment.SamProvSDK;
 import com.emcrey.payment.card.CardInfo;
+import com.emcrey.payment.card.CardVerificationType;
 import com.emcrey.payment.card.Result;
 import com.emcrey.payment.card.Scheme;
 import com.emcrey.payment.listeners.CardResultListener;
 import com.emcrey.payment.listeners.GetCardsListener;
 import com.emcrey.payment.listeners.GetVisaInfoListener;
+import com.emcrey.payment.listeners.ResultListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -74,6 +76,10 @@ public class SamsungProvisioning extends CordovaPlugin {
         }
         if (action.equals("init")) {
             this.init();
+            return true;
+        }
+        if (action.equals("verifyCardIdv")) {
+            this.verifyCardIdv(args);
             return true;
         }
         return false;
@@ -238,6 +244,26 @@ public class SamsungProvisioning extends CordovaPlugin {
                     object = new JSONObject();
                 }
                 callbackContext.error(object);
+            }
+        });
+    }
+
+    private void verifyCardIdv(JSONArray args) throws JSONException {
+        String cardId = (String) args.get(0);
+        String otp = (String) args.get(1);
+        String vtype = (String) args.get(2);
+        CardVerificationType type = CardVerificationType.valueOf(vtype);
+        iSamProvSDK.verifyCardIdv(cardId, otp, type, new ResultListener() {
+            @Override
+            public void result(boolean success, Result result) {
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("success", success);
+                    object.put("result", gson.toJson(result));
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                callbackContext.success(object);
             }
         });
     }
