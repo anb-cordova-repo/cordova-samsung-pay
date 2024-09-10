@@ -15,7 +15,7 @@ module.exports = {
     exec(success, error, PLUGIN_NAME, "getVisaWalletInfo");
   },
   addCard: function (success, error, payload) {
-    exec(success, error, PLUGIN_NAME, "addCard", [payload]);
+    exec(success, error, PLUGIN_NAME, "addCard", payload);
   },
   getAllCards: function (success, error) {
     exec(success, error, PLUGIN_NAME, "getAllCards");
