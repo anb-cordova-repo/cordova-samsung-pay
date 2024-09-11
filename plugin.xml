@@ -6,7 +6,11 @@
 	<js-module name="SamsungProv" src="www/SamsungPayPlugin.js">
 		<clobbers target="cordova.plugins.SamsungProv"/>
 	</js-module>
+	<js-module name="GoogleProv" src="www/GooglePayPlugin.js">
+		<clobbers target="cordova.plugins.GoogleProv" />
+	</js-module>
 	<asset src="www/SamsungPayPlugin.js" target="js/SamsungPayPlugin.js"/>
+	<asset src="www/GooglePayPlugin.js" target="js/GooglePayPlugin.js"/>
 	<engines>
 		<engine name="cordova" version=">=3.4.0"/>
 	</engines>
@@ -15,6 +19,10 @@
 			<feature name="SamsungProv">
 				<param name="android-package" value="com.emcrey.provision.SamsungProvisioning"/>
 				<param name="onload" value="true"/>
+			</feature>
+			<feature name="GoogleProv">
+				<param name="android-package" value="com.emcrey.provision.GoogleProvisioning" />
+				<param name="onload" value="true" />
 			</feature>
 		</config-file>
 		<source-file src="src/android/com/emcrey/provision/SamsungProvisioning.java" target-dir="src/com/emcrey/provision"/>

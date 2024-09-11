@@ -82,6 +82,10 @@ public class SamsungProvisioning extends CordovaPlugin {
             this.verifyCardIdv(args);
             return true;
         }
+        if (action.equals("addCoBadgeCard")) {
+            this.addCoBadgeCard(args);
+            return true;
+        }
         return false;
     }
 
@@ -119,7 +123,7 @@ public class SamsungProvisioning extends CordovaPlugin {
     }
 
     private void getServiceId() {
-        if(this.ServiceId == null) {
+        if (this.ServiceId == null) {
             callbackContext.error("Service ID is not set");
         }
 
@@ -190,8 +194,9 @@ public class SamsungProvisioning extends CordovaPlugin {
     private void getAllCards() {
         iSamProvSDK.getAllCards(new GetCardsListener() {
             @Override
-            public void onSuccess(List <CardInfo> list) {
-                Type listType = new TypeToken <List<CardInfo>>() {}.getType();
+            public void onSuccess(List<CardInfo> list) {
+                Type listType = new TypeToken<List<CardInfo>>() {
+                }.getType();
                 String card = gson.toJson(list, listType);
                 JSONObject object;
                 try {
@@ -266,6 +271,40 @@ public class SamsungProvisioning extends CordovaPlugin {
                 callbackContext.success(object);
             }
         });
+    }
+
+    private void addCoBadgeCard(JSONArray args) throws JSONException {
+        String primaryPayload = (String) args.get(0);
+        Scheme primaryScheme = Scheme.valueOf((String) args.get(1));
+        String secondaryPayload = (String) args.get(2);
+        Scheme secomdaryScheme = Scheme.valueOf((String) args.get(3));
+        iSamProvSDK.addCoBadgeCard(primaryPayload, primaryScheme, secondaryPayload, secomdaryScheme,
+                new CardResultListener() {
+                    @Override
+                    public void onSuccess(CardInfo cardInfo) {
+                        String card = gson.toJson(cardInfo);
+                        JSONObject object;
+                        try {
+                            object = new JSONObject();
+                            object.put("cardInfo", card);
+                        } catch (JSONException e) {
+                            object = new JSONObject();
+                        }
+                        callbackContext.success(object);
+                    }
+
+                    @Override
+                    public void onFail(Result result) {
+                        JSONObject object;
+                        try {
+                            object = new JSONObject();
+                            object.put("result", gson.toJson(result));
+                        } catch (JSONException e) {
+                            object = new JSONObject();
+                        }
+                        callbackContext.error(object);
+                    }
+                });
     }
 
     private void activateSamsungPay() {

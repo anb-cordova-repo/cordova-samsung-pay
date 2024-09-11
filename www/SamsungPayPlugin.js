@@ -35,4 +35,7 @@ module.exports = {
   verifyCardIdv: function (success, error, args) {
     exec(success, error, PLUGIN_NAME, "verifyCardIdv", args);
   },
+  addCoBadgeCard: function (success, error, args) {
+    exec(success, error, PLUGIN_NAME, "addCoBadgeCard", args);
+  },
 };
