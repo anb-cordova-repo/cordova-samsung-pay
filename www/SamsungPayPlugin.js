@@ -37,5 +37,5 @@ module.exports = {
   },
   addCoBadgeCard: function (success, error, args) {
     exec(success, error, PLUGIN_NAME, "addCoBadgeCard", args);
-  },
+  }
 };

@@ -116,6 +116,7 @@ public class SamsungProvisioning extends CordovaPlugin {
         String newServiceId = args.getString(0);
         if (!TextUtils.isEmpty(newServiceId)) {
             this.ServiceId = newServiceId;
+            this.iSamProvSDK = SamProvSDK.initSamsungPrevisioning(this.cordova.getActivity(), ServiceId);
             callbackContext.success("Service ID set to " + newServiceId);
         } else {
             callbackContext.error("Service ID is empty");
