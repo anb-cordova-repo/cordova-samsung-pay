@@ -1,11 +1,11 @@
 {
-  "name": "samsung-pay-plugin",
+  "name": "samsung-wallet-cordova-plugin",
   "version": "1.0.0",
   "main": "www/SamsungPayPlugin.js",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anb-cordova-repo/Samsung-pay-plugin.git"
+    "url": "git+https://github.com/anb-cordova-repo/cordova-samsung-pay.git"
   },
   "cordova": {
     "id": "com.samsungpay.plugin",
