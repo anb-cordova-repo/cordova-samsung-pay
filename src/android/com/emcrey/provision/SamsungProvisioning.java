@@ -1,6 +1,5 @@
 package com.emcrey.provision;
 
-import android.content.Context;
 import android.text.TextUtils;
 
 import com.emcrey.payment.ISamProvSDK;
@@ -17,14 +16,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -38,53 +34,43 @@ public class SamsungProvisioning extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.callbackContext = callbackContext;
-        if (action.equals("checkEligibility")) {
-            this.checkEligibility();
-            return true;
-        }
-        if (action.equals("addCard")) {
-            this.addCard(args);
-            return true;
-        }
-        if (action.equals("activateSamsungPay")) {
-            this.activateSamsungPay();
-            return true;
-        }
-        if (action.equals("goToUpdatePage")) {
-            this.goToUpdatePage();
-            return true;
-        }
-        if (action.equals("getVisaWalletInfo")) {
-            this.getVisaWalletInfo();
-            return true;
-        }
-        if (action.equals("getAllCards")) {
-            this.getAllCards();
-            return true;
-        }
-        if (action.equals("getCardById")) {
-            this.getCardById(args);
-            return true;
-        }
-        if (action.equals("setServiceId")) {
-            this.setServiceId(args);
-            return true;
-        }
-        if (action.equals("getServiceId")) {
-            this.getServiceId();
-            return true;
-        }
-        if (action.equals("init")) {
-            this.init();
-            return true;
-        }
-        if (action.equals("verifyCardIdv")) {
-            this.verifyCardIdv(args);
-            return true;
-        }
-        if (action.equals("addCoBadgeCard")) {
-            this.addCoBadgeCard(args);
-            return true;
+        switch (action) {
+            case "checkEligibility":
+                this.checkEligibility();
+                return true;
+            case "addCard":
+                this.addCard(args);
+                return true;
+            case "activateSamsungPay":
+                this.activateSamsungPay();
+                return true;
+            case "goToUpdatePage":
+                this.goToUpdatePage();
+                return true;
+            case "getVisaWalletInfo":
+                this.getVisaWalletInfo();
+                return true;
+            case "getAllCards":
+                this.getAllCards();
+                return true;
+            case "getCardById":
+                this.getCardById(args);
+                return true;
+            case "setServiceId":
+                this.setServiceId(args);
+                return true;
+            case "getServiceId":
+                this.getServiceId();
+                return true;
+            case "init":
+                this.init();
+                return true;
+            case "verifyCardIdv":
+                this.verifyCardIdv(args);
+                return true;
+            case "addCoBadgeCard":
+                this.addCoBadgeCard(args);
+                return true;
         }
         return false;
     }
@@ -257,8 +243,8 @@ public class SamsungProvisioning extends CordovaPlugin {
     private void verifyCardIdv(JSONArray args) throws JSONException {
         String cardId = (String) args.get(0);
         String otp = (String) args.get(1);
-        String vtype = (String) args.get(2);
-        CardVerificationType type = CardVerificationType.valueOf(vtype);
+        String vType = (String) args.get(2);
+        CardVerificationType type = CardVerificationType.valueOf(vType);
         iSamProvSDK.verifyCardIdv(cardId, otp, type, new ResultListener() {
             @Override
             public void result(boolean success, Result result) {
@@ -314,15 +300,5 @@ public class SamsungProvisioning extends CordovaPlugin {
 
     private void goToUpdatePage() {
         iSamProvSDK.goToUpdatePage();
-    }
-
-    @Override
-    public void onDestroy() {
-
-    }
-
-    @Override
-    public void onReset() {
-
     }
 }
