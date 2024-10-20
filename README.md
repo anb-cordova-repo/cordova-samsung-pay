@@ -22,33 +22,6 @@ cordova.plugins.SamsungProv.checkEligibility(success, error);
 
 ```javascript
 cordova.plugins.SamsungProv.addCard(payload, success, error);
-
-{
-  "accountNumber": 9819465435,
-  "cvv2": 111,
-  "provider": {
-    "clientAppID": "AppID1234",
-    "clientDeviceID": "DummyDeviceId",
-    "clientWalletProvider": 123456789,
-    "clientWalletAccountID": "DummyWalletAccountId",
-    "intent": "INTENT",
-    "isIDnV": false
-  },
-  "billingAddress": {
-    "line1": "street1",
-    "line2": "street2",
-    "city": "city",
-    "state": "state",
-    "zip": 123456,
-    "country": "US"
-  },
-  "name": "James",
-  "expirationDate": {
-    "month": 12,
-    "year": 2022
-  }
-}
-
 ```
 
 ### 3. Get Card By Id
@@ -91,6 +64,12 @@ cordova.plugins.SamsungProv.setServiceId(setServiceId,success, error);
 
 ```javascript
 cordova.plugins.SamsungProv.init(success, error);
+```
+
+### 10. add Co Badge Card
+
+```javascript
+cordova.plugins.SamsungProv.addCoBadgeCard(payload,success, error);
 ```
 
 ## Platforms Supported

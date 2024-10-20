@@ -264,8 +264,8 @@ public class SamsungProvisioning extends CordovaPlugin {
         String primaryPayload = (String) args.get(0);
         Scheme primaryScheme = Scheme.valueOf((String) args.get(1));
         String secondaryPayload = (String) args.get(2);
-        Scheme secomdaryScheme = Scheme.valueOf((String) args.get(3));
-        iSamProvSDK.addCoBadgeCard(primaryPayload, primaryScheme, secondaryPayload, secomdaryScheme,
+        Scheme secondaryScheme = Scheme.valueOf((String) args.get(3));
+        iSamProvSDK.addCoBadgeCard(primaryPayload, primaryScheme, secondaryPayload, secondaryScheme,
                 new CardResultListener() {
                     @Override
                     public void onSuccess(CardInfo cardInfo) {
