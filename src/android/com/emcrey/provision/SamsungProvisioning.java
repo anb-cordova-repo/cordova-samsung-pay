@@ -86,6 +86,11 @@ public class SamsungProvisioning extends CordovaPlugin {
     }
 
     public void checkEligibility() {
+        if (iSamProvSDK == null) {
+            callbackContext.error("Samsung SDK not initialized");
+            return;
+        }
+
         iSamProvSDK.checkEligibility((available, result) -> {
             JSONObject object = new JSONObject();
             try {
